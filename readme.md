@@ -6,6 +6,6 @@
 * numpy: 1.18.2
 
 # test:
-    robot_rotation_test.py
+* robot_rotation_test.py
 
 
