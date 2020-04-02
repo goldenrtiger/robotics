@@ -51,6 +51,35 @@ fRx = lambda t: np.matrix([[1, 0, 0],[0, math.cos(t), -math.sin(t)], [0, math.si
 fRy = lambda t: np.matrix([[math.cos(t), 0, math.sin(t)],[0, 1, 0],  [-math.sin(t), 0, math.cos(t)]])
 fRz = lambda t: np.matrix([[math.cos(t), -math.sin(t), 0], [math.sin(t), math.cos(t), 0], [0, 0,1]])
 
+# ---------------------- rotate around a vector ----------------------------------------
+def get_rotation(rxyz_rad, vector, origin = np.array([0., 0., 0.])):
+    ox, oy, oz = origin.tolist()
+    ux_, uy_, uz_ = vector.tolist()
+    ux = ux_ - ox; uy = uy_ - oy; uz = uz_ - oz
+
+    R = [
+            [
+                math.cos(rxyz_rad) + ux ** 2 * (1 - math.cos(rxyz_rad)), 
+                ux * uy * (1 - math.cos(rxyz_rad)) - uz * math.sin(rxyz_rad),
+                ux * uz * (1 - math.cos(rxyz_rad)) + uy * math.sin(rxyz_rad)
+            ], 
+            [
+                uy * ux * (1 - math.cos(rxyz_rad)) + uz * math.sin(rxyz_rad), 
+                math.cos(rxyz_rad) + uy ** 2 * (1 - math.cos(rxyz_rad)),
+                uy * uz * (1 - math.cos(rxyz_rad)) - ux * math.sin(rxyz_rad)
+            ], 
+            [
+                uz * ux * (1 - math.cos(rxyz_rad)) - uy * math.sin(rxyz_rad), 
+                uz * uy * (1 - math.cos(rxyz_rad)) + ux * math.sin(rxyz_rad),
+                math.cos(rxyz_rad) + uz ** 2 * (1 - math.cos(rxyz_rad))
+            ], 
+        ]
+
+    return np.matrix(R)
+
+def normalize_vector(vector):
+    return vector / np.sqrt(np.sum(vector ** 2))
+
 origin = np.matrix([0, 0, 0])
 xaxis = np.matrix([1, 0, 0])
 yaxis = np.matrix([0, 1, 0])
@@ -79,6 +108,11 @@ origin_ = (Ry @ origin_.T).T
 xaxis_ = (Ry @ xaxis_.T).T
 yaxis_ = (Ry @ yaxis_.T).T
 zaxis_ = (Ry @ zaxis_.T).T
+
+# ---------------------- rotate around a vector ----------------------------------------
+vector = normalize_vector(np.array([-1.438783, 13.919369, -99.016065]))
+Rx = get_rotation(0.5035549257762054, vector)
+xaxis_ = (Rx @ np.matrix(vector).T).T
 
 arraxis_ = np.append([np.array(xaxis_), np.array(yaxis_)], [np.array(zaxis_)], axis = 0)
 plotdata_ = np.append([np.array(origin), np.array(xaxis_), np.array(origin), np.array(yaxis_)], \
