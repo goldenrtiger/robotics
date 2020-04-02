@@ -8,5 +8,6 @@
 # test:
 * robot_rotation_test.py
 * robot_planes_vector_test.py
+* geometry_fitting.py
 
 

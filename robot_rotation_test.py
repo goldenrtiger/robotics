@@ -119,7 +119,9 @@ plotdata_ = np.append([np.array(origin), np.array(xaxis_), np.array(origin), np.
                 [np.array(origin), np.array(zaxis_)], axis = 0)
 data_ = fitdata(plotdata_)
 
-M = np.linalg.solve(np.matrix(arraxis), np.matrix(arraxis_)).T
+# M = np.linalg.solve(np.matrix(arraxis), np.matrix(arraxis_))
+R = np.matrix(arraxis) @ np.linalg.inv(np.matrix(arraxis_))
+arraxis1 = R @ np.matrix(arraxis_)
 
 print(f"xaxis_:\n {xaxis_} \n yaxis_: \n {yaxis_} \n zaxis_:\n {zaxis_},\n M:\n {M} ")
 

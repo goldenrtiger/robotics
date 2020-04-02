@@ -6,8 +6,6 @@
 # author: Xu Jing
 # email: xj.yixing@hotmail.com
 # 
-# 1. get rotation matrix from EulerAngles
-# 2. get EulerAngles from rotation matrix
 # ---------------------------------------
 # ----------------------------------------------------------------------
 import numpy as np
