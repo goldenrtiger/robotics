@@ -123,7 +123,7 @@ data_ = fitdata(plotdata_)
 R = np.matrix(arraxis) @ np.linalg.inv(np.matrix(arraxis_))
 arraxis1 = R @ np.matrix(arraxis_)
 
-print(f"xaxis_:\n {xaxis_} \n yaxis_: \n {yaxis_} \n zaxis_:\n {zaxis_},\n M:\n {M} ")
+print(f"xaxis_:\n {xaxis_} \n yaxis_: \n {yaxis_} \n zaxis_:\n {zaxis_},\n R:\n {R} ")
 
 ax.plot(data_[0], data_[1], data_[2], 'r')
 plt.show()
