@@ -10,4 +10,7 @@
 * robot_planes_vector_test.py
 * geometry_fitting.py
 
+# docs:
+* Understanding the Basis of the Kalman Filter Via a Simple and Intuitive Derivation [dowload] (https://drive.google.com/drive/folders/1Tt22xHkcruw-aiRk0AsG1VhRDSvQCFqG)
+
 

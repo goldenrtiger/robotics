@@ -129,4 +129,4 @@ ax.plot(data_[0], data_[1], data_[2], 'r')
 plt.show()
 
 # -------------------- get EulerAngles from rotation matrix -----------------
-rotationMatrixToEulerAngles(M)
+rotationMatrixToEulerAngles(R)
